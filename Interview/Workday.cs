@@ -8,5 +8,11 @@ namespace Interview
 {
     public class Workday
     {
+        public static DateTime CalculateWorkday(DateTime startDate, int numberOfWOrkdays)
+        {
+            // TODO: test and implement me!
+            return DateTime.Today;
+        }
     }
+
 }
