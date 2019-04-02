@@ -24,8 +24,12 @@ namespace Interview
         /// <returns>The work day that we get after adding the number of workdays to the start date</returns>
         public static DateTime CalculateWorkday(DateTime startDate, int numberOfWOrkdays)
         {
+            /* a local variable to hold the start date. 
+            We can work on the same argument of the function but my preference to define local variables.*/
             DateTime myStartDate = startDate;
-            // a local variable to hold the start date. We can work on the same argument of the function but my preference to define local variables.
+
+            /* a local variable to hold the start date which will be updated lated. 
+            We can work on the same argument of the function but my preference to define local variables.*/
             DateTime myUpdatedStartDate = myStartDate;
 
             /* a local variable to hold the value that the function will return. 
@@ -52,7 +56,7 @@ namespace Interview
             
             // casting the new day of the week to integer value
             // we add it the order of start day per week that we calculated
-            int orderOfStartDayPerWeek = (int)myUpdatedStartDate.DayOfWeek;
+            int orderOfStartDayPerWeek = (int) myUpdatedStartDate.DayOfWeek;
             
             // The total number of days is the new updated order of the start day per week plus the number of remaining days.
             int myTotalDays = orderOfStartDayPerWeek + myRemainingDays;
