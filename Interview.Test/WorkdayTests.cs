@@ -27,7 +27,7 @@ namespace Interview.Test
         /// The intention is to see whether the calculation works good over weekends
         /// The start date is a Tuesday day before the Weekend
         /// The calculated date is Wednesday after the Weekend
-        /// </summary
+        /// </summary>
         [TestMethod]
         public void TestMethodLonglPeriodOverWeekend()
         {
@@ -38,6 +38,22 @@ namespace Interview.Test
             Assert.AreEqual(expected, actual);
         }
 
+
+        /// <summary>
+        /// This method tests the calculation for a normal period of three days over a single weekend
+        /// The intention is to see whether the calculation works good over weekends
+        /// The start date is a Friday day before the Weekend
+        /// The calculated date is Wednesday after the Weekend
+        /// </summary>
+        [TestMethod]
+        public void TestMethodNormalPeriodOverWeekend()
+        {
+            var myDay = 3;
+            var myDate = DateTime.Parse("16-March-2018");
+            var actual = Interview.Workday.CalculateWorkday(myDate, myDay);
+            var expected = DateTime.Parse("21-March-2018");
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }

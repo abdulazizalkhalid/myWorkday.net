@@ -44,16 +44,24 @@ namespace Interview
             int myNumberOfAllDaysToBeAdded = myNumberOfWorkingWeeks * DAYS_OF_WEEK;
             
             //The updated start date will be increase to contain the calculated days.
-            myUpdatedStartDate = myStartDate.AddDays(myNumberOfAllDaysToBeAdded); 
-            
-            // The remaining days are the reminder of dividing number of days entered by user over the number working days by week which is five working days.
+            myUpdatedStartDate = myStartDate.AddDays(myNumberOfAllDaysToBeAdded);
+
+            /* The remaining days are the reminder of dividing number of days entered by user 
+            over the number working days by week which is five working days.*/
             int myRemainingDays = myNumberOfWorkDays % WORKING_DAYS;
             
             // casting the new day of the week to integer value
             // we add it the order of start day per week that we calculated
             int orderOfStartDayPerWeek = (int)myUpdatedStartDate.DayOfWeek;
+            
             // The total number of days is the new updated order of the start day per week plus the number of remaining days.
             int myTotalDays = orderOfStartDayPerWeek + myRemainingDays;
+
+            //if the total is greater than five days then we need to add two extra days(for the weekend) to the remaining days.
+            if (myTotalDays > WORKING_DAYS)
+            {
+                myRemainingDays = myRemainingDays + 2;
+            }
 
             // We add the remaining days to the update date and assign the output to the variable which will contain the calculated value.
             myCalulatedDate = myUpdatedStartDate.AddDays(myRemainingDays);
