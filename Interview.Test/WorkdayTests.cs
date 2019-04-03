@@ -120,5 +120,25 @@ namespace Interview.Test
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// This method test the special code for handling the Weekend days.
+        /// Specifically, it is related to Saturday day.
+        /// Saturday should be excluded from calculation because it not a work day.
+        /// Hence, we design a test method to test that specific code.
+        /// </summary>
+        [TestMethod]
+        public void TestMethodofSaturday()
+        {
+            var myDay = 2;
+            var myDate = DateTime.Parse("17-March-2018");
+            var actual = Interview.Workday.CalculateWorkday(myDate, myDay);
+            var expected = DateTime.Parse("20-March-2018");
+            Assert.AreEqual(expected, actual);
+        }
+
+
+       
+
+
     }
 }

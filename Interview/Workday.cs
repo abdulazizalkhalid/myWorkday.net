@@ -40,6 +40,29 @@ namespace Interview
             We can use the same argument of the function (in the header of the function) but my preference to define a local variable.*/
             int myNumberOfWorkDays = numberOfWOrkdays;
 
+            // if the start date is Saturday, then we need to add two days the the start date.
+            // This is because the weekend days are not work days. In addition, counting will be start from Friday.
+            // In other words, it the start work day is a weekend day, I consider the start date the last working day before that date.
+            // In this case, it is Friday. For example, if user entered 2, I count two days after Friday, then I get Tuesday
+            if (myStartDate.DayOfWeek == DayOfWeek.Saturday)
+            {
+                // Adding two days for Satudrday and Sunday
+                // we conunt from last working day which is Friday.
+                myStartDate = myStartDate.AddDays(2);
+                // Hence we decrease number of days by one.
+                myNumberOfWorkDays = myNumberOfWorkDays - 1;
+            }
+            // it the start date is Sunday, then we need to start counting from Monday.
+            // Based on my assumptions, if the start days is Friday, Saturday of Sunday, that will produce the same output
+            else if (myStartDate.DayOfWeek == DayOfWeek.Sunday)
+            {
+                // We add one day the the start date.
+                myStartDate = myStartDate.AddDays(1);
+                // We start countring from Friday
+                myNumberOfWorkDays = myNumberOfWorkDays - 1;
+            }
+
+
             // We have 5 working days per week and 7 days per week
             // This is a local variable to have the number of working weeks equivalent to number of working days entered by the user.
             int myNumberOfWorkingWeeks = myNumberOfWorkDays / WORKING_DAYS;
