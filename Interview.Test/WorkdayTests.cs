@@ -137,7 +137,37 @@ namespace Interview.Test
         }
 
 
-       
+        /// <summary>
+        /// Monday is the first day of the week. It is a boundary day.
+        /// many algorithms fails with the specific case of boundaries.
+        /// hence, this method test that boundary.
+        /// The start date is Monday
+        /// </summary>
+        [TestMethod]
+        public void TestMethodFirstDayofTheWeekMonday()
+        {
+            var myDay = 2;
+            var myDate = DateTime.Parse("19-March-2018");
+            var actual = Interview.Workday.CalculateWorkday(myDate, myDay);
+            var expected = DateTime.Parse("21-March-2018");
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        /// Friday is the first day of the week. It is a boundary day.
+        /// many algorithms fails with the specific case of boundaries.
+        /// hence, this method test that boundary.
+        /// The start date is Friday
+        /// </summary>
+        [TestMethod]
+        public void TestMethodLastDayofTheWeekFriday()
+        {
+            var myDay = 2;
+            var myDate = DateTime.Parse("16-March-2018");
+            var actual = Interview.Workday.CalculateWorkday(myDate, myDay);
+            var expected = DateTime.Parse("20-March-2018");
+            Assert.AreEqual(expected, actual);
+        }
 
 
     }
