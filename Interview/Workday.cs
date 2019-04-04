@@ -40,6 +40,17 @@ namespace Interview
             We can use the same argument of the function (in the header of the function) but my preference to define a local variable.*/
             int myNumberOfWorkDays = numberOfWOrkdays;
 
+            // number of working days cannot be negative value, if that happens, we need to trigger an exception
+            if (myNumberOfWorkDays < 0)
+            {
+                throw new ArgumentException("Number of work days cannot be negative", "myNumberOfWorkDays");
+            }
+
+            /* if number of working days is equal to zero, then the calculated working
+            date is equivalent to the start date. 
+            This line can be removed. Program will continue to work.*/
+            if (myNumberOfWorkDays == 0) return myCalulatedDate;
+
             // if the start date is Saturday, then we need to add two days the the start date.
             // This is because the weekend days are not work days. In addition, counting will be start from Friday.
             // In other words, it the start work day is a weekend day, I consider the start date the last working day before that date.

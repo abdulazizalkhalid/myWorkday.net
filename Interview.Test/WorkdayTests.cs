@@ -11,9 +11,19 @@ namespace Interview.Test
   * 2. A long period that covers the weekend : TestMethodLonglPeriodOverWeekend
   * 3. A normal period that covers the weekend: TestMethodNormalPeriodOverWeekend
   * 4. short period that covers the weekend: TestMethodShortPeriodOverWeekend
-  * 5. A period cover multiple weeks (two) TestMethodWithinTwoWeeks
-  * 6. A period cover multiple weeks (three) TestMethodWithinThreeWeeks
+  * 5. A period cover multiple weeks (two): TestMethodWithinTwoWeeks
+  * 6. A period cover multiple weeks (three): TestMethodWithinThreeWeeks
+  * 7. The start date is a weekend: TestMethodofSaturday
+  * 8. The boundary case which is first day of the work week, that is Monday: TestMethodFirstDayofTheWeekMonday
+  * 9. The boundary case which is last day of the work week, that is Friday: TestMethodLastDayofTheWeekFriday
+  
+  * The class also includes test cases also cover the exceptional behaviour or the software which includes:
+  * 1. An input entered by the user equal to zero: TestMethodOfDaysEqualZero
+  * 2. A negative input entered by the user: TestMethodForException
   * */
+
+
+
     [TestClass]
 	public class WorkdayTests
 	{
@@ -170,5 +180,41 @@ namespace Interview.Test
         }
 
 
+
+        /// <summary>
+        /// The user may enter number of work days equal to zero.
+        /// In this case, the calculated date is equivalent the start day.
+        /// The general code of the program works with input equal to zero.
+        /// There is also special to break the program when the input is equal to zero.
+        /// This test method tests the behavior of the program when number of work days entered is equal to zero.
+        /// </summary>
+        [TestMethod]
+        public void TestMethodOfDaysEqualZero()
+        {
+            var myDay = 0;
+            var myDate = DateTime.Parse("19-March-2018");
+            var actual = Interview.Workday.CalculateWorkday(myDate, myDay);
+            var expected = DateTime.Parse("19-March-2018");
+            Assert.AreEqual(expected, actual);
+        }
+
+
+
+        /// <summary> 
+        /// This test case checks that the library throws an exception.
+        /// This happens when number of days is negative.
+        /// The user may enter a number of days as a negative number.
+        /// In this case, the library should throw an exception.
+        /// the user of the library needs catch the exception and handle it in the way he/she want
+        /// This test case assure that an exception is triggred in such scenario.
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestMethodForException()
+        {
+            var myDay = -3;
+            var myDate = DateTime.Parse("16-March-2018");
+            var actual = Interview.Workday.CalculateWorkday(myDate, myDay);
+        }
     }
 }
